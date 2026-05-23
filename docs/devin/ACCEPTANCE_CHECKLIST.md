@@ -31,9 +31,16 @@ A task is accepted only if there is evidence.
 ## Pass 3 acceptance
 
 - [ ] WB token validation is implemented or verified.
-- [ ] Valid token is accepted.
-- [ ] Invalid token is rejected.
-- [ ] Error class is documented.
+- [ ] WB sandbox availability is documented (see `docs/devin/WB_SANDBOX_NOTES.md`).
+- [ ] WB API proof plan is followed (see `docs/devin/WB_API_PROOF_PLAN.md`).
+- [ ] First WB surface used is `common-api.wildberries.ru` (`/ping` and `/api/v1/seller-info`).
+- [ ] Probe mode (A production / B sandbox / C no-secret) is recorded in the report.
+- [ ] Valid token is accepted (HTTP 200 on `/ping` and, in Mode A, on `/api/v1/seller-info` with non-empty `sid`).
+- [ ] Invalid token is rejected (HTTP 401 with `detail` matching `malformed_token` class).
+- [ ] No-token case is rejected (HTTP 401 with `detail == "empty Authorization header"`).
+- [ ] Error class is documented (mapped per `WB_API_PROOF_PLAN.md` §5).
+- [ ] WB `requestId`s are recorded; raw tokens are NOT.
+- [ ] No production mutations were issued; only GET on `/ping` and `/api/v1/seller-info`.
 - [ ] No Ozon scope was added.
 - [ ] No broad marketplace abstraction was added.
 - [ ] Secrets were not exposed.
