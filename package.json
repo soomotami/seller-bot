@@ -1,13 +1,19 @@
 {
   "name": "sellernerve-api",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "SellerNerve live-proof API. WB-first. Telegram-first. Minimal Express app with /health/live and /health/ready (Postgres readiness via SELECT 1).",
+  "description": "SellerNerve live-proof API. WB-first. Telegram-first. Minimal Express app with /health/live, /health/ready, and the Telegram webhook + callback loop (Pass 2).",
   "main": "src/server.js",
   "type": "commonjs",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "node src/server.js"
+    "dev": "node src/server.js",
+    "migrate": "node src/db/migrate.js",
+    "telegram:me": "node src/scripts/telegram-webhook.js me",
+    "telegram:webhook:info": "node src/scripts/telegram-webhook.js info",
+    "telegram:webhook:set": "node src/scripts/telegram-webhook.js set",
+    "telegram:webhook:delete": "node src/scripts/telegram-webhook.js delete",
+    "telegram:send-test-alert": "node src/scripts/send-test-alert.js"
   },
   "engines": {
     "node": ">=20.0.0"
